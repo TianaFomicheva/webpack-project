@@ -30,6 +30,9 @@ module.exports ={
         })
         
     ],
+    resolve: {
+        extensions: ['.js', '.ts']
+    },
     module:{
         rules: [
             {
@@ -37,7 +40,15 @@ module.exports ={
                 use: [MiniCssExtractPlugin.loader,'css-loader']
             },
             {
-                test: /\.m?js$/,
+                test: /\.less$/,
+                use: [MiniCssExtractPlugin.loader,'css-loader','less-loader']
+            },
+            {
+                test: /\.scss$/,
+                use: [MiniCssExtractPlugin.loader,'css-loader','sass-loader']
+            },
+            {
+                test: /\.(js|ts)$/,
                 exclude: /node_modules/,
                 use: {
                   loader: "babel-loader",
